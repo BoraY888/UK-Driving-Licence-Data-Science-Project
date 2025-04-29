@@ -9,6 +9,10 @@ For the first visualisation in the dashboard I want to create simple bar charts 
 **Design**
 
 A sketch was created using Draw.io and uploaded to the repository as an XML file. Two bar charts will be created with age groups starting with 16-17, then 18-20 and 3 year intervals till 27-29, and 5 year intervals after. The interactive elements will include changing which types of driving licences the user wants to see, and which number of penalty points the user would like to see on the bar chart. Also, appropriate colours must be chosen to account for colourblind users.
+To view the diagram:
+Go to https://app.diagrams.net
+Click "File" > "Open from URL" (or open from device if downloaded)
+Paste this link: https://raw.githubusercontent.com/BoraY888/UK-Driving-Licence-Data-Science-Project/main/Driver Age Visualisation.drawio
 
 **Development**
 
@@ -26,3 +30,7 @@ For this part of the dashboard I will create a regional map of the UK that first
 **Design**
 
 Using a UK County Map I sketched a general idea for how the interactive map will work. The Gender distribution map will have a gradient scale to give users insights on which regions in the UK have a larger amount of Male or Female drivers with Penalty Points. The interactive elements will be hovering over each region will show an exact ratio of Male:Female drivers with Penalty Points, which can be used to compare regions in the next interactive map. The second map will encompass all important variables, asking the user to input a Gender and Age and then highlighting each region by whether the inputted demographic would be considered high (red) or low (green) risk, which will also be a gradient scale.
+To view the diagram:
+Go to https://app.diagrams.net
+Click "File" > "Open from URL" (or open from device if downloaded)
+Paste this link: https://raw.githubusercontent.com/BoraY888/UK-Driving-Licence-Data-Science-Project/main/UK Interactive Maps.drawio
