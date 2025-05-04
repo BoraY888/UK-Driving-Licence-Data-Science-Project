@@ -199,8 +199,8 @@ elif page == "Interactive Map":
     
     @st.cache                   #importing the county map geoPKG file with cache, as file is very large and any change to the maps crashed the app before the caching
     def load_data(file_path):
-        return gpd.read_file(file_path)
-    gdf = load_data("bdline_gb.gpkg", driver='GPKG')
+        return gpd.read_file(file_path, driver='GPKG')
+    gdf = load_data("bdline_gb.gpkg")
 
     data2 = pd.read_excel("driving-licence-data-feb-2025.xlsx", sheet_name=1, skiprows=11)
     data2 = data2[data2["County"] != "Unknown"]
