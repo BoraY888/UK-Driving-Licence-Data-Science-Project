@@ -27,7 +27,7 @@ elif page == "Charts and Insights":
     st.title("Charts and Insights")
     st.write("Distribution of driving licences and penalty points.")
 
-    data1 = pd.read_excel('CW_App/driving-licence-data-feb-2025.xlsx', skiprows=21) #Cleaning first dataset
+    data1 = pd.read_excel('driving-licence-data-feb-2025.xlsx', skiprows=21) #Cleaning first dataset
     data1.reset_index(drop=True, inplace=True)
     data1["Age"] = pd.to_numeric(data1["Age"], errors="coerce")
     bins = [14, 17, 20, 23, 26, 29, 34, 39, 44, 49, 60, 70, 80, 110]
@@ -52,7 +52,7 @@ elif page == "Charts and Insights":
     provisional_licences_by_group = grouped.apply(lambda g: get_group_value(g, g.name))
 
 
-    data6 = pd.read_excel('CW_App/driving-licence-data-feb-2025.xlsx', sheet_name=5, skiprows=25)  #cleaning and importing of the penalty points by age group data
+    data6 = pd.read_excel('driving-licence-data-feb-2025.xlsx', sheet_name=5, skiprows=25)  #cleaning and importing of the penalty points by age group data
     data6 = data6.drop(index=range(43))  #Removing driving licence types that already come with having a full driving licence   
     data6 = data6.rename(columns={"Unnamed: 0": "Licence Type"})
     data6 = data6.set_index("Licence Type")
@@ -138,7 +138,7 @@ elif page == "Charts and Insights":
     st.header("Weighted Total of Penalty Points held by Age Group")
     st.caption("Weighted Total has been calculated by multiplying the amount of Penalty Points by the Count of Drivers (e.g 300 drivers hold 3 points on Licence each = 900)")
 
-    data4 = pd.read_excel('CW_App/driving-licence-data-feb-2025.xlsx', sheet_name=3, skiprows=25)      #Cleaning and importing Penalty Points dataset
+    data4 = pd.read_excel('driving-licence-data-feb-2025.xlsx', sheet_name=3, skiprows=25)      #Cleaning and importing Penalty Points dataset
     data4 = data4.drop(columns=['Gender', 'Current Pts', 'Unnamed: 50', 'Total'])
     data4 = data4.groupby("Age At Refresh", as_index=False).sum()
     weighted_cols = [col for col in data4.columns if col not in ['Age At Refresh']]     #As penalty points is each column, this code isolates those columns
@@ -202,7 +202,7 @@ elif page == "Interactive Map":
         return gpd.read_file(file_path)
     gdf = load_data("bdline_gb.gpkg")
 
-    data2 = pd.read_excel("CW_App/driving-licence-data-feb-2025.xlsx", sheet_name=1, skiprows=11)
+    data2 = pd.read_excel("driving-licence-data-feb-2025.xlsx", sheet_name=1, skiprows=11)
     data2 = data2[data2["County"] != "Unknown"]
     data2 = data2.iloc[:-1]
 
@@ -266,7 +266,7 @@ elif page == "Interactive Map":
 
     st.header("Risk Assessment of accumulating Penalty Points per County")
     #Loading and cleaning data
-    data5 = pd.read_excel('CW_App/driving-licence-data-feb-2025.xlsx', sheet_name=4, skiprows=25)
+    data5 = pd.read_excel('driving-licence-data-feb-2025.xlsx', sheet_name=4, skiprows=25)
     data5 = data5.drop(columns=['Current Pts', 'Unnamed: 49'])
     penalty_cols1 = [col for col in data5.columns if col not in ['Total', 'County', 'District']]
     data5['Weighted Points'] = data5[penalty_cols1].mul([int(c) for c in penalty_cols1], axis=1).sum(axis=1)
