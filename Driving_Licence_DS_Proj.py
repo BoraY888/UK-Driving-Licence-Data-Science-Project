@@ -190,17 +190,20 @@ elif page == "Interactive Map":
 
     import os
     import requests
+    import gdown
     url = "https://drive.google.com/uc?export=download&id=1ZK_5NzrwGQUUasTs26zMfcjVEosCxOG3"
     local_file = "bdline_gb.gpkg"
-    if not os.path.exists(local_file):
-        response = requests.get(url)
-        with open(local_file, "wb") as f:
-            f.write(response.content)
     
-    @st.cache                   #importing the county map geoPKG file with cache, as file is very large and any change to the maps crashed the app before the caching
+    # Download the file if it doesn't exist
+    if not os.path.exists(local_file):
+        gdown.download(url, local_file, quiet=False)  # Downloads the file
+    
+    @st.cache
     def load_data(file_path):
-        return gpd.read_file(file_path, driver='GPKG')
-    gdf = load_data("bdline_gb.gpkg")
+        return gpd.read_file(file_path, driver="GPKG")
+    
+    # Load the data
+    gdf = load_data(local_file)
 
     data2 = pd.read_excel("driving-licence-data-feb-2025.xlsx", sheet_name=1, skiprows=11)
     data2 = data2[data2["County"] != "Unknown"]
