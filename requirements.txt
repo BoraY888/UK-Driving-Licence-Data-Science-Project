@@ -4,7 +4,3 @@ numpy
 pandas
 requests
 streamlit
-openpyxl
-pyogrio
-gdal
-gdown
